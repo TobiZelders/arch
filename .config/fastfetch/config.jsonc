@@ -1,0 +1,43 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo" : { 
+    "type": "auto",        // Logo type: auto, builtin, small, file, etc.
+    "source": "Linux_small",      // Built-in logo name or file path
+    "width": 60,           // Width in characters (for image logos)
+    "height": 35,          // Height in characters (for image logos)
+    "padding": {
+        "top": 2,          // Top padding
+        "left": 7,         // Left padding
+        "right": 7         // Right padding
+    },
+    "color": {             // Override logo colors
+        "1": "yellow",
+        "2": "red"
+    }
+  },
+  "display": {
+    "color": {
+      "keys" : "red",
+      "title" : "yellow"
+    },
+    "key": {
+      "width": 22	
+    }
+  },
+  "modules": [
+    "title",
+    "separator",
+    "os",
+    "kernel",
+    "packages",
+    "shell",
+    "de",
+    "wm",
+    "wmtheme",
+    "theme",
+    "icons",
+    "disk",
+    "localip",
+    "battery"
+  ]
+}
