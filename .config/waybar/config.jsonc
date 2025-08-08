@@ -5,9 +5,9 @@
     "position": "top",
     "name": "indicator",
 
-    "margin-top": 40,
-    "margin-left": 24,
-    "margin-right": 24,
+    "margin-top": 2,
+    "margin-left": 2,
+    "margin-right": 2,
 
     "modules-right": ["custom/batteryindicator"],
 
@@ -25,9 +25,9 @@
     "position": "top",
     "name": "main",
 
-    "margin-top": -41,
-    "margin-left": 24,
-    "margin-right": 24,
+    "margin-top": -35,
+    "margin-left": 10,
+    "margin-right": 10,
 
     "modules-left": [
       "group/tray",
@@ -43,22 +43,15 @@
     "modules-right": [
       "custom/spacer1",
       "cpu",
-      "temperature",
       "custom/nvidia",
-      // "memory#ram",
       "group/storage",
-      // "memory#swap",
-      // "disk",
       "network#info",
       "custom/spacer1",
       "pulseaudio#input",
       "pulseaudio#output",
-      "custom/spacer1",
-      "hyprland/language",
       "backlight",
       "custom/battery",
       "custom/spacer1",
-      "custom/weather",
       "clock"
     ],
 
@@ -68,19 +61,11 @@
       "format": " {percentage_used}%",
       "tooltip": "{}",
       "tooltip-format": "Free {free}",
-      "on-click": "qdirstat & aplay ~/.config/sounds/interact.wav",
+      "on-click": "kitty --class ncdu -e ncdu",
       "states": {
         "warning": 85,
         "critical": 95
       }
-    },
-
-    "custom/weather": {
-      "format": "{}°",
-      "tooltip": true,
-      "interval": 1800,
-      "exec": "wttrbar --nerd --location Inari",
-      "return-type": "json"
     },
 
     "group/tray": {
@@ -118,7 +103,8 @@
       "exec": "~/.config/hypr/themes/Mocha/nvidia.sh",
       "format": "<span size='x-large' rise='-2500'>󰢮</span>{text}",
       "tooltip": "true",
-      "tooltip-format": "{alt}"
+      "tooltip-format": "{alt}",
+      "on-click": "kitty --class btop -e btop"
     },
 
     "custom/battery": {
@@ -127,7 +113,7 @@
       "exec": "~/.config/hypr/themes/Mocha/bat-pp.sh refresh",
       "exec-on-event": true,
       "format": "{text}%",
-      "on-click": "~/.config/hypr/themes/Mocha/bat-pp.sh toggle & aplay ~/.config/sounds/interact.wav",
+      "on-click": "~/.config/hypr/themes/Mocha/bat-pp.sh toggle & mpg123 /home/tobi/.config/sounds/interact.mp3",
       "tooltip": "true",
       "tooltip-format": "{alt}W"
     },
@@ -149,31 +135,23 @@
           "today": "<span color='#f5e0dc'><b><u>{}</u></b></span>"
         }
       },
-      "on-click": "chromium --app=https://calendar.google.com & aplay ~/.config/sounds/interact.wav"
+      "on-click": "chromium --app=https://calendar.google.com & mpg123 /home/tobi/.config/sounds/interact.mp3"
     },
 
     "cpu": {
       "interval": 4,
       "format": " {usage}%",
+      "on-click": "kitty --class btop -e btop",
       "states": {
         "warning": 80,
         "critical": 95
       }
     },
 
-    "hyprland/language": {
-      "format": " {}",
-      "format-fi": "Vittu",
-      "format-ru": "Блять",
-      "min-length": 7,
-      "on-click": "hyprctl switchxkblayout current next & aplay ~/.config/sounds/interact.wav",
-      "tooltip": false,
-      "class": "language"
-    },
-
     "memory#ram": {
       "interval": 4,
       "format": " {percentage}%",
+      "on-click": "kitty --class btop -e btop",
       "states": {
         "warning": 80,
         "critical": 95
@@ -186,7 +164,8 @@
       "interval": 16,
       "format": "󰾵 {swapPercentage}%",
       "tooltip": "{}",
-      "tooltip-format": "{swapUsed}/{swapTotal}GiB"
+      "tooltip-format": "{swapUsed}/{swapTotal}GiB",
+      "on-click": "kitty --class ncdu -e ncdu"
     },
 
     "network#info": {
@@ -198,12 +177,11 @@
       "tooltip": "{}",
       "tooltip-format-wifi": "{ifname}\n{essid}\n{signalStrength}% \n{frequency} GHz\n󰇚 {bandwidthDownBits}\n󰕒 {bandwidthUpBits}",
       "tooltip-format-ethernet": "{ifname}\n󰇚 {bandwidthDownBits} \n󰕒 {bandwidthUpBits}",
-      "on-click": "iwgtk& aplay ~/.config/sounds/interact.wav",
       "format-icons": ["󰤫", "󰤟", "󰤢", "󰤥", "󰤨"],
+      "on-click": "kitty --class nmtui -e nmtui",
       "states": {
         "normal": 25
-      },
-      "on-click": "nmtui"
+      }
     },
 
     "network#up": {
@@ -233,7 +211,7 @@
 
     "hyprland/window": {
       "format": "{title}",
-      "max-length": 48,
+      "max-length": 46,
       "tooltip": false,
       "icon": true,
       "icon-size": 18,
@@ -267,7 +245,7 @@
         "default": ["", ""]
       },
       "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-      "on-click": "pwvucontrol & aplay ~/.config/sounds/interact.wav",
+      "on-click": "pwvucontrol & mpg123 /home/tobi/.config/sounds/interact.mp3",
       "tooltip": true,
       "scroll-step": 5
     },
@@ -282,14 +260,6 @@
       "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
       "on-click": "pwvucontrol & aplay ~/.config/sounds/interact.wav",
       "tooltip-format": "{source_desc}"
-    },
-
-    "temperature": {
-      "critical-threshold": 90,
-      "interval": 4,
-      "format": "{icon} {temperatureC}°",
-      "format-icons": ["", "", "", "", ""],
-      "tooltip": false
     },
 
     "tray": {
@@ -308,15 +278,15 @@
     },
 
     "custom/spacer3": {
-      "format": " // ",
+      "format": "//",
       "tooltip": false
     },
 
     "custom/trayicon": {
       // "format": "",
       // "format": "Zäni",
-      // "format": "󰣇",
-      "format": "",
+      //"format": "󰣇",
+      "format": "    ",
       "tooltip": false,
       "on-click": "aplay /home/jan-aarela/.config/sounds/pacman.wav> /dev/null 2>/dev/null & kitty --title Pacman fish -c '~/.config/fish/Pacman.sh & sudo pacman -Syu'"
     }
