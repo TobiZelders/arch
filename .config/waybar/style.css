@@ -2,7 +2,7 @@
 */
 
 /* Define colors */ /* {{{ */
-@define-color background  rgba(21, 21, 32, 0.75);
+@define-color background  rgba(100, 21, 32, 0);
 /* @define-color background  #151520; */
 @define-color warning     #f38ba8;
 @define-color caution     #45475a;
@@ -14,6 +14,8 @@
 @define-color window      #b4befe;
 @define-color resize      #eba0ac;
 @define-color process     #89b4fa;
+@define-color beep	 #B22222;/*#ef3434;*/
+@define-color beep2	 #ef3434;
 /* }}} */
 
 /* Reset all styles */ /* {{{ */
@@ -84,13 +86,11 @@
   background: transparent;
 }
 
+/*
 #waybar.main #tray {
   padding-right: 6pt;
 }
-
-#waybar.main #custom-weather {
-  padding-right: 3pt;
-}
+*/
 /* }}} */
 
 /* Module colors */ /* {{{ */
@@ -101,46 +101,46 @@
 #waybar.main #memory.swap,
 #waybar.main #disk,
 #waybar.main #network {
-  color: @performance;
+  color: @beep;
 }
 
 #waybar.main #pulseaudio {
-  color: @audio;
+  color: @beep;
 }
 
 #waybar.main #custom-battery,
 #waybar.main #language,
 #waybar.main #backlight,
 #waybar.main #battery {
-  color: @misc;
+  color: @beep;
 }
 
 #waybar.main #custom-weather,
 #waybar.main #clock {
-  color: @date;
+  color: @beep;
 }
 
 #waybar.main #window {
-  color: @window;
+  color: @beep;
   margin-top: -0px;
 }
 
 #waybar.main #network.info {
-  padding-right: 10px;
-  padding-left: 10px;
-  color: @caution;
+  padding-right: 0px;
+  padding-left: 0px;
+  color: @beep;
   background: transparent;
 }
 
 #waybar.main #network.info.wifi.normal,
 #waybar.main #network.info.ethernet {
-  color: @performance;
-  padding-right: 15px;
+  color: @beep;
+  padding-right: 0px;
 }
 
 #waybar.main #network.info.wifi {
   color: @warning;
-  padding-right: 15px;
+  padding-right: 0px;
 } /* }}} */
 
 /* Submap */ /* {{{ */
@@ -205,7 +205,7 @@
 /* Workspace */ /* {{{ */
 /* Default workspace settings */
 #waybar.main #workspaces button {
-  color: @caution;
+  color: @beep;
   background: transparent;
   border: 1.5px solid transparent;
   padding-left: 2pt;
@@ -213,31 +213,31 @@
   border-radius: 16px;
   margin-bottom: 8px;
   margin-top: 8px;
-  margin-left: 4px;
-  margin-right: 4px;
+  margin-left: 2px;
+  margin-right: 2px;
   transition: all 0.25s ease;
 }
 
 /* Focused workspace */
 #waybar.main #workspaces button.visible {
-  color: @window;
+  color: @beep;
 }
 
 /* Focused workspace & monitor */
 #waybar.main #workspaces button.active {
-  color: @window;
+  color: @beep;
   border: 1.5px solid @caution;
 }
 
 /* Style when cursor is on the button */
 #waybar.main #workspaces button:hover {
-  color: @window;
+  color: @beep2;
 }
 
 /* Special workplace animation */
 #waybar.main #workspaces button.special.active {
   border: 1.5px solid transparent;
-  color: @window;
+  color: @beep;
   transition: all 0s ease;
   animation-iteration-count: infinite;
   animation-direction: alternate;
@@ -259,13 +259,19 @@
 
 /* Custom tray icon */ /* {{{ */
 #waybar.main #custom-trayicon {
-  font-size: 11pt;
+  font-size: 15pt;
   font-weight: bold;
   font-style: italic;
   color: @process;
-  background: transparent;
-  padding-right: 6pt;
-  padding-left: 2pt;
+  /*background: transparent;*/
+  background-image: url('/home/tobi/Downloads/beep.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding-right: 0;
+  padding-left: 0;
+  margin-right: 0;
+  margin-left: 0;
 }
 /* }}} */
 
@@ -319,7 +325,7 @@ tooltip {
 
 /* Set defaults for indicator bar */
 #waybar.indicator {
-  font-size: 27px;
+  font-size: 23px;
   /* This makes indicator thicker */
   color: rgba(0, 0, 0, 0);
   background: rgba(0, 0, 0, 0);
@@ -330,7 +336,7 @@ tooltip {
   border: 2.5px solid @caution;
   background: @background;
   border-radius: 8pt;
-  padding-left: 2237.5px;
+  padding-left: 1265px;
   /* Use this for padding:  */
   /* (H_rez / scaling) - L_margin -R_margin - 2 * border - (font-size / 2)*/
   /* For example: (2880px / 1.25) - 24 - 24 - 2 * 2.5 - (27 / 2) = 2237.5px */
