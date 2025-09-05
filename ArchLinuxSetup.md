@@ -1,41 +1,70 @@
 # My Arch Linux Setup
 
-This document lists the main tools I use on my Arch system, with descriptions and installation commands.  
+This document lists the main tools I use on my Arch system, along with descriptions and installation commands.  
 It serves as a reference for reinstallations or future setups.
 
----
 
-# Official repos
+## Table of Contents
 
-sudo pacman -S networkmanager nmtui bluetui fastfetch btop kitty thunar neovim gvfs gvfs-gphoto2 tumbler ffmpegthumbnailer thunar-volman
+1. [Official Repositories](#official-repositories)  
+2. [AUR Packages](#aur-packages)  
+3. [Breakdown of the tools](#tool-breakdown)  
+   - [Network Management](#network-management)  
+   - [System Information](#system-information)  
+   - [Camera Support](#camera-support)  
+   - [Bluetooth](#bluetooth)  
+4. [Notes](#notes)  
 
-# AUR
 
+## Official Repositories
+
+Install the following packages from the official Arch repos:
+
+```
+sudo pacman -S \
+  networkmanager nmtui \
+  fastfetch btop \
+  kitty thunar imv \
+  gvfs gvfs-gphoto2 tumbler ffmpegthumbnailer thunar-volman
+```
+
+## AUR Packages
+
+```
 yay -S bluetui
+```
 
----
 
-# Breakdown of the tools
+# Tool Breakdown
 
 **nmtui**  
   Text-based UI for `NetworkManager`.  
   Lets me manage Wi-Fi and wired connections in the terminal.  
 
-sudo pacman -S networkmanager nmtui
+```sudo pacman -S networkmanager nmtui```
 
 **fastfetch**  
   A modern and fast system information tool (like `neofetch`).  
   I use it to display basic system details in the terminal. 
 
-sudo pacman -S fastfetch
+```sudo pacman -S fastfetch```
 
-# For my canon camera
+**For my canon camera**
+Packages for Canon camera integration and media handling:
+  gvfs, gvfs-gphoto2 – for mounting and accessing camera files
+  tumbler – generates thumbnails for media files
+  ffmpegthumbnailer – generates video thumbnails
+  thunar-volman – automates media handling in Thunar
 
-sudo pacman -S gvfs gvfs-gphoto2 tumbler ffmpegthumbnailer thunar-volman
+```sudo pacman -S gvfs gvfs-gphoto2 tumbler ffmpegthumbnailer thunar-volman```
 
-# For my bluetooth
+**To view media files**
 
-yay pacman -S bluetui
+```sudo pacman -S imv```
+
+**For my bluetooth**
+
+```yay pacman -S bluetui```
 
 ---
 
